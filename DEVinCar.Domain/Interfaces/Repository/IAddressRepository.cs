@@ -10,4 +10,3 @@ namespace DEVinCar.Domain.Interfaces.Repository
         void Delete(Address adress);
     }
 }
-
