@@ -12,12 +12,14 @@
     <None Remove="Annotations\" />
     <None Remove="ViewModels\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="DTOs\" />
     <Folder Include="Annotations\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
