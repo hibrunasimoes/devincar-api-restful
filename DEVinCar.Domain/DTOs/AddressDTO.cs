@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DEVinCar.Domain.DTOs
 {
-    public class AdressDTO
+    public class AddressDTO
     {
         [Required(ErrorMessage = "The Street is required")]
         [MaxLength(150,ErrorMessage="Street name must be a maximum of 100 characters")]

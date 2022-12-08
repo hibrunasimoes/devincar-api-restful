@@ -53,7 +53,7 @@ public class StatesController : ControllerBase
     public ActionResult<int> PostAdress(
         [FromRoute] int stateId,
         [FromRoute] int cityId,
-        [FromBody] AdressDTO body)
+        [FromBody] AddressDTO body)
     {
         var idState = _context.States.Find(stateId);
         var idCity = _context.Cities.Find(cityId);
