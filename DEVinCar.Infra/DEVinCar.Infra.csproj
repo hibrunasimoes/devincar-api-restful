@@ -13,9 +13,11 @@
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.Relational" />
+    <None Remove="Data\Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Data\Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DEVinCar.Domain\DEVinCar.Domain.csproj" />
