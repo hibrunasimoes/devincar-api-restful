@@ -13,7 +13,6 @@
     <None Remove="ViewModels\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Interfaces\" />
-    <None Remove="Interfaces\Repository\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -21,7 +20,6 @@
     <Folder Include="Annotations\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Interfaces\Repository\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
