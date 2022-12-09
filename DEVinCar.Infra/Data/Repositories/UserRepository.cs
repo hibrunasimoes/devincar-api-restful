@@ -9,12 +9,6 @@ namespace DEVinCar.Infra.Data.Repositories
         public UserRepository(DevInCarDbContext context) : base(context)
         {
         }
-
-        public void DeleteUser(User user)
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<SaleCar> GetBuyerByUserID(int id)
         {
             throw new NotImplementedException();

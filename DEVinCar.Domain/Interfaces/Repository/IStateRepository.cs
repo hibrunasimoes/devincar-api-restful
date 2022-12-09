@@ -6,7 +6,7 @@ namespace DEVinCar.Domain.Interfaces.Repository
     public interface IStateRepository
     {
         IList<State> ListAll();
-        State GetStateByID(int stateId);
+        State GetById(int stateId);
         City GetCityById(int cityId);
         void InsertCity(City city);
         void InsertAdress(Address adress);

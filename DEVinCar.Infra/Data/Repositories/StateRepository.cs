@@ -15,11 +15,6 @@ namespace DEVinCar.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public State GetStateByID(int stateId)
-        {
-            throw new NotImplementedException();
-        }
-
         public void InsertAdress(Address adress)
         {
             throw new NotImplementedException();
