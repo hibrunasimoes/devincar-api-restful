@@ -1,9 +1,12 @@
 ﻿using System;
+using DEVinCar.Domain.Interfaces.Repository;
+using DEVinCar.Domain.Models;
+
 namespace DEVinCar.Infra.Data.Repositories
 {
-    public class DevliveryRepository
+    public class DeliveryRepository : BaseRepository<Delivery, int>, IDeliveryRepository
     {
-        public DevliveryRepository()
+        public DeliveryRepository(DevInCarDbContext context) : base(context)
         {
         }
     }

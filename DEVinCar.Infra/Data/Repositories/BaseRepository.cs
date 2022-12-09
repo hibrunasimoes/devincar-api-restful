@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DEVinCar.Infra.Data.Repositories
 {
-    public class BaseRepositorio<TEntity, Tkey> where TEntity : class
+    public class BaseRepository<TEntity, Tkey> where TEntity : class
     {
         protected readonly DevInCarDbContext _context;
 
-        public BaseRepositorio(DevInCarDbContext context)
+        public BaseRepository(DevInCarDbContext context)
         {
             _context = context;
         }
@@ -41,9 +41,9 @@ namespace DEVinCar.Infra.Data.Repositories
             return _context.Set<TEntity>().Count();
         }
 
-        public virtual IQueryable<TEntity> ListAll()
+        public virtual IList<TEntity> ListAll()
         {
-            return _context.Set<TEntity>();
+            return _context.Set<TEntity>().ToList();
         }
     }
 }
