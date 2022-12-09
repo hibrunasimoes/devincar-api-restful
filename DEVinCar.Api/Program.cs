@@ -1,7 +1,11 @@
 using System.Text.Json.Serialization;
+using DEVinCar.DI.IoC;
 using DEVinCar.Infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.RegisterServices();
+builder.Services.RegisterRepositories();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
