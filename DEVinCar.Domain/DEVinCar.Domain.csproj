@@ -7,21 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Models\" />
     <None Remove="DTOs\" />
     <None Remove="Annotations\" />
     <None Remove="ViewModels\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Interfaces\" />
     <None Remove="Interfaces\Services\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="DTOs\" />
     <Folder Include="Annotations\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Interfaces\Services\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
