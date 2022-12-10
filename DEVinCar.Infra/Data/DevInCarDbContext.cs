@@ -22,7 +22,7 @@ namespace DEVinCar.Infra.Data
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
 
-            options.UseSqlServer("Server=localhost;Database=BD_DEVINCAR;User=sa;Password=MyPassword123#;"
+            options.UseSqlServer("Server=localhost;Database=BD_DEVINCARPROGRAM;User=sa;Password=MyPassword123#;"
             );
         }
 

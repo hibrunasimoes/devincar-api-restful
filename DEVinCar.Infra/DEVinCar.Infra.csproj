@@ -15,11 +15,13 @@
     <None Remove="Microsoft.EntityFrameworkCore.Relational" />
     <None Remove="Data\Mappings\" />
     <None Remove="Data\Repositories\" />
+    <None Remove="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Data\Mappings\" />
     <Folder Include="Data\Repositories\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DEVinCar.Domain\DEVinCar.Domain.csproj" />
