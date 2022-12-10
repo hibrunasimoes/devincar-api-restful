@@ -1,3 +1,5 @@
+using DEVinCar.Domain.Enums;
+
 namespace DEVinCar.Domain.Models
 {
     public class User
@@ -7,18 +9,20 @@ namespace DEVinCar.Domain.Models
         public string Password { get; set; }
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
+        public Roles Role { get; set; }
 
         public User()
         {
             
         }
-        public User(int id, string email, string password, string name, DateTime birthDate)
+        public User(int id, string email, string password, string name, DateTime birthDate, Roles role)
         {
             Id = id;
             Email = email;
             Password = password;
             Name = name;
             BirthDate = birthDate;
+            Role = role;
         }
     }
 }
