@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using DEVinCar.Domain.Annotations;
+using DEVinCar.Domain.Enums;
 
 namespace DEVinCar.Domain.DTOs{
     public class UserDTO{
@@ -19,6 +20,10 @@ namespace DEVinCar.Domain.DTOs{
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [CheckAgeAttribute(18)]
         public DateTime BirthDate { get; set; }
-      
+        public Roles Role { get; set; }
+
+        public UserDTO()
+        {
+        }
     }
 }
