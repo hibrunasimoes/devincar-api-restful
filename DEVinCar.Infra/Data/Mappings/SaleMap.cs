@@ -23,7 +23,8 @@ namespace DEVinCar.Infra.Data.Mappings
 
             builder.HasOne(u => u.UserSeller)
                 .WithMany()
-                .HasForeignKey(u => u.SellerId);
+                .HasForeignKey(u => u.SellerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
