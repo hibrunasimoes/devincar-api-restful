@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using DEVinCar.DI.IoC;
+using DEVinCar.Domain.AutoMapper;
 using DEVinCar.Infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.RegisterRepositories();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton(AutoMapperConfig.Configure());
 builder.Services.AddDbContext<DevInCarDbContext>();
 
 var app = builder.Build();

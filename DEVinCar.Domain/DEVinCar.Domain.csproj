@@ -15,6 +15,8 @@
     <None Remove="Interfaces\Services\" />
     <None Remove="Services\" />
     <None Remove="Enums\" />
+    <None Remove="AutoMapper" />
+    <None Remove="AutoMapper\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOs\" />
@@ -24,8 +26,10 @@
     <Folder Include="Interfaces\Services\" />
     <Folder Include="Services\" />
     <Folder Include="Enums\" />
+    <Folder Include="AutoMapper\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
   </ItemGroup>
 </Project>
