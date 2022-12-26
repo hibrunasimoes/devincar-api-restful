@@ -1,6 +1,7 @@
 ﻿using System;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DEVinCar.Infra.Data.Repositories
 {
@@ -9,6 +10,5 @@ namespace DEVinCar.Infra.Data.Repositories
         public AddressRepository(DevInCarDbContext context) : base(context)
         {
         }
-
     }
 }
