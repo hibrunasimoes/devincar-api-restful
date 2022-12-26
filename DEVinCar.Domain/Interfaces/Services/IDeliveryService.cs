@@ -5,7 +5,7 @@ namespace DEVinCar.Domain.Interfaces.Services
 {
     public interface IDeliveryService
     {
-        IList<DeliveryDTO> ListAll();
+        IList<DeliveryDTO> ListAll(int? addressId, int? saleId);
     }
 }
 
