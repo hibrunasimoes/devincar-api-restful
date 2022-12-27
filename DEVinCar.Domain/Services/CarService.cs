@@ -8,8 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DEVinCar.Domain.Services
 {
-
-
     public class CarService : ICarService
     {
         private readonly ICarRepository _carRepository;
@@ -28,10 +26,14 @@ namespace DEVinCar.Domain.Services
             var carDb = _carRepository.GetById(id);
            var soldCar = _saleCarRepository.ListAll().Any(s => s.CarId == id);
             if (carDb == null)
-                throw new Exception("");
+            {
+                throw new Exception("!");
+            }
 
             if (soldCar)
-                throw new Exception("");
+            {
+                throw new Exception("!");
+            }
 
             _carRepository.Delete(carDb);
         }
@@ -40,7 +42,9 @@ namespace DEVinCar.Domain.Services
         {
             var carDb = _carRepository.GetById(id);
             if (carDb == null)
+            {
                 throw new Exception("!");
+            }
             return _mapper.Map<CarDTO>(carDb);
         }
 
@@ -57,8 +61,9 @@ namespace DEVinCar.Domain.Services
                 query = query.Where(c => c.Name.Contains(name));
 
             if (priceMin > priceMax)
-                throw new Exception("");
-
+            {
+                throw new Exception("!");
+            }
             if (priceMin.HasValue)
                 query = query.Where(c => c.SuggestedPrice >= priceMin);
 
@@ -66,7 +71,9 @@ namespace DEVinCar.Domain.Services
                 query = query.Where(c => c.SuggestedPrice <= priceMax);
 
             if (!query.ToList().Any())
-                throw new Exception("");
+            {
+                throw new Exception("!");
+            }
 
             return _mapper.Map<IList<CarDTO>>(query).ToList();
         }
@@ -76,17 +83,25 @@ namespace DEVinCar.Domain.Services
             var carDb = _carRepository.GetById(DTO.Id);
             var name = _carRepository.ListAll()
                   .Any(c => c.Name == DTO.Name && c.Id != DTO.Id);
-
-
             if (carDb == null)
-                throw new Exception("");
-            if (carDb.Name.Equals(null) || DTO.SuggestedPrice.Equals(null))
-                throw new Exception("");
-            if (DTO.SuggestedPrice <= 0)
-                throw new Exception("");
-            if (name)
-                throw new Exception("");
+            {
+                throw new Exception("!");
+            }
 
+            if (carDb.Name.Equals(null) || DTO.SuggestedPrice.Equals(null))
+            {
+                throw new Exception("!");
+            }
+
+            if (DTO.SuggestedPrice <= 0)
+            {
+                throw new Exception("!");
+            }
+
+            if (name)
+            {
+                throw new Exception("!");
+            }
             carDb.Update(DTO);
             _carRepository.Update(carDb);
         }

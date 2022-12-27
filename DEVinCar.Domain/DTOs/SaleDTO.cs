@@ -7,5 +7,10 @@ namespace DEVinCar.Domain.DTOs
         [Required(ErrorMessage = "The BuyerId is required.")]
         public int BuyerId { get; set; }
         public DateTime SaleDate { get; set; }
+        public int SellerId { get; set; }
+
+        public SaleDTO()
+        {
+        }
     }
 }

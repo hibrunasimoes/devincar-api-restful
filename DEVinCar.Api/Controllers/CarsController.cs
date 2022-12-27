@@ -25,32 +25,27 @@ public class CarController : ControllerBase
 
     [HttpGet]
     public IActionResult Get(
-        [FromQuery] string name,
-        [FromQuery] decimal? priceMin,
-        [FromQuery] decimal? priceMax
-    )
+        [FromQuery] string name, decimal? priceMin, decimal? priceMax)
     {
         return Ok(_carService.ListAll(name, priceMin, priceMax));
     }
 
     [HttpPost]
-    public IActionResult Post(
-        [FromBody] CarDTO body
-    )
+    public IActionResult Post([FromBody] CarDTO body)
     {
         _carService.Insert(body);
         return Created("api/car", body);
     }
 
     [HttpDelete("{carId}")]
-    public IActionResult Delete ([FromRoute] int carId)
+    public IActionResult Delete([FromRoute] int carId)
     {
         _carService.Delete(carId);
         return NoContent();
     }
 
     [HttpPut("{carId}")]
-    public IActionResult Put([FromBody] CarDTO carDto, [FromRoute] int carId)
+    public IActionResult Put([FromBody] CarDTO carDto,[FromRoute] int carId)
     {
         carDto.Id = carId;
         _carService.Update(carDto);
