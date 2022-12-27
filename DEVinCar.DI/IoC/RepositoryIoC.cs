@@ -11,14 +11,13 @@ namespace DEVinCar.DI.IoC
         public static IServiceCollection RegisterRepositories(this IServiceCollection builder)
         {
             return builder
-                .AddDbContext<DevInCarDbContext>()
                 .AddScoped<IAdressRepository, AddressRepository>()
                 .AddScoped<ICarRepository, CarRepository>()
                 .AddScoped<IDeliveryRepository, DeliveryRepository>()
                 .AddScoped<ISaleRepository, SaleRepository>()
                 .AddScoped<IStateRepository, StateRepository>()
-                .AddScoped<IUserRepository, UserRepository>();
+                .AddScoped<IUserRepository, UserRepository>()
+                .AddScoped<ISaleCarRepository, SaleCarRepository>();
         }
-
     }
 }

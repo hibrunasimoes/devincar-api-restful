@@ -19,9 +19,7 @@ namespace DEVinCar.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get(
-        [FromQuery] int? addressId,
-        [FromQuery] int? saleId)
+        public IActionResult Get([FromQuery] int? addressId, int? saleId)
         {
             return Ok(_deliveryService.ListAll(addressId, saleId));
         }
