@@ -7,9 +7,6 @@ namespace DEVinCar.Domain.Interfaces.Repository
 	{
         SaleCar GetById(int id);
         IQueryable<SaleCar> ListAll();
-        void Insert(Car car);
-        void Delete(Car car);
-        void Update(Car car);
     }
 }
 

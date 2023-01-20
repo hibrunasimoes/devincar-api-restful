@@ -1,6 +1,7 @@
 ﻿using System;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DEVinCar.Infra.Data.Repositories
 {
@@ -28,7 +29,8 @@ namespace DEVinCar.Infra.Data.Repositories
 
         IQueryable<SaleCar> ISaleCarRepository.ListAll()
         {
-            throw new NotImplementedException();
+            return _context.SaleCars
+                .Include(sc => sc.Car);
         }
     }
 }

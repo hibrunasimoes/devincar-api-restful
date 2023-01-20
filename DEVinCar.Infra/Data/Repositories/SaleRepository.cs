@@ -1,6 +1,8 @@
 ﻿using System;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Models;
+using DEVinCar.Infra.Data.Mappings;
+using Microsoft.EntityFrameworkCore;
 
 namespace DEVinCar.Infra.Data.Repositories
 {
@@ -9,30 +11,36 @@ namespace DEVinCar.Infra.Data.Repositories
         public SaleRepository(DevInCarDbContext context) : base(context)
         {
         }
-
+        public override Sale GetById(int id)
+        {
+            return _context.Sales.Where(s => s.Id == id)
+                .Include(s => s.UserBuyer)
+                .Include(s => s.UserSeller)
+                .Include(s => s.Cars)
+                .FirstOrDefault();
+        }
         public void InsertDelivery(Delivery delivery)
         {
-            throw new NotImplementedException();
+            _context.Deliveries.Add(delivery);
+            _context.SaveChanges();
         }
 
         public void InsertSale(SaleCar saleCar)
         {
-            throw new NotImplementedException();
+            _context.SaleCars.Add(saleCar);
+            _context.SaveChanges();
         }
 
         public void UpdateAmount(SaleCar saleCar)
         {
-            throw new NotImplementedException();
+            _context.SaleCars.Update(saleCar);
+            _context.SaveChanges();
         }
 
         public void UpdatePrice(SaleCar saleCar)
         {
-            throw new NotImplementedException();
-        }
-
-        SaleCar ISaleRepository.GetById(int id)
-        {
-            throw new NotImplementedException();
+            _context.SaleCars.Update(saleCar);
+            _context.SaveChanges();
         }
     }
 }
