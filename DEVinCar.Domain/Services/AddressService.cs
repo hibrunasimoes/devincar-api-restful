@@ -3,6 +3,7 @@ using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Interfaces.Services;
+using DEVinCar.Domain.Models;
 using DEVinCar.Domain.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +24,17 @@ namespace DEVinCar.Domain.Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var addressDb = _addressRepository.GetById(id);
+
+            var relation = _deliveryRepository.ListAll().FirstOrDefault(d => d.AddressId == id);
+
+            if (addressDb == null)
+                throw new NotImplementedException();
+
+            if (relation != null)
+                throw new NotImplementedException();
+
+            _addressRepository.Delete(addressDb);
         }
 
         public IList<AddressViewModel> ListAll(int? cityId, int? stateId, string street, string cep)
@@ -60,7 +71,21 @@ namespace DEVinCar.Domain.Services
 
         public void Update(AddressPatchDTO addressPatchDTO, int id)
         {
-            throw new NotImplementedException();
+            var addressDb = _addressRepository
+               .ListAll().FirstOrDefault(a => a.Id == id);
+
+            if (addressDb == null)
+                throw new NotImplementedException();
+
+            if (addressPatchDTO.Number <= 0)
+                throw new NotImplementedException();
+
+            if (!addressPatchDTO.Cep.All(char.IsDigit))
+                throw new NotImplementedException();
+
+            addressDb.Update(addressPatchDTO);
+            _addressRepository.Update(addressDb);
+
         }
     }
 }
