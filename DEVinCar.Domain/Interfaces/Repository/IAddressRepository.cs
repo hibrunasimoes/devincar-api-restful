@@ -5,6 +5,9 @@ namespace DEVinCar.Domain.Interfaces.Repository
 {
     public interface IAddressRepository
     {
+        void Delete(Address addressDb);
+        Address GetById(int id);
         IQueryable<Address> ListAll();
+        void Update(Address addressDb);
     }
 }
