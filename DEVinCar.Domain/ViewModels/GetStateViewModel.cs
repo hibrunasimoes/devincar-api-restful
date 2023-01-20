@@ -8,11 +8,15 @@ namespace DEVinCar.Domain.ViewModels {
 
         public virtual List<string> Cities { get; set; }
 
-        public GetStateViewModel(int id, string name, string intials) {
-            Id = id;
-            Name = name;
-            Initials = intials;
-            Cities = new List<string>();
+        public GetStateViewModel(State state)
+        {
+            Id = state.Id;
+            Name = state.Name;
+            Initials = state.Initials;
+            foreach (var city in state.Cities)
+            {
+                Cities.Add(city?.Name);
+            }
         }
     }
 }

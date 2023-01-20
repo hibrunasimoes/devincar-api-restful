@@ -7,6 +7,7 @@ namespace DEVinCar.Domain.Interfaces.Repository
     {
         void Delete(Address addressDb);
         Address GetById(int id);
+        void Insert(Address address);
         IQueryable<Address> ListAll();
         void Update(Address addressDb);
     }

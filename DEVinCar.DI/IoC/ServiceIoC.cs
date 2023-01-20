@@ -11,13 +11,13 @@ namespace DEVinCar.DI.IoC
         public static IServiceCollection RegisterServices(this IServiceCollection builder)
         {
             return builder
-                .AddDbContext<DevInCarDbContext>()
-                .AddScoped<IAddressService, AddressService>()
-                .AddScoped<ICarService, CarService>()
-                .AddScoped<IDeliveryService, DeliveryService>()
-                .AddScoped<ISaleService, SaleService>()
-                .AddScoped<IStateService, StateService>()
-                .AddScoped<IUserService, UserService>();
+            .AddDbContext<DevInCarDbContext>()
+            .AddScoped<IAddressService, AddressService>()
+            .AddScoped<ICarService, CarService>()
+            .AddScoped<IDeliveryService, DeliveryService>()
+            .AddScoped<ISaleService, SaleService>()
+            .AddScoped<IStateService, StateService>()
+            .AddScoped<IUserService, UserService>();
         }
     }
 }
