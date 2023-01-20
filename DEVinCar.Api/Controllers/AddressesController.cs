@@ -4,6 +4,7 @@ using DEVinCar.Domain.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using DEVinCar.Domain.ViewModels;
+using DEVinCar.Domain.Interfaces.Services;
 
 namespace DEVinCar.Api.Controllers;
 
@@ -12,59 +13,22 @@ namespace DEVinCar.Api.Controllers;
 
 public class AddressesController : ControllerBase
 {
+    private readonly IAddressService _addressService;
     private readonly DevInCarDbContext _context;
 
-    public AddressesController(DevInCarDbContext context)
+    public AddressesController(IAddressService addressService, DevInCarDbContext context)
     {
+        _addressService = addressService;
         _context = context;
     }
 
     [HttpGet]
-    public ActionResult<List<AddressViewModel>> Get([FromQuery] int? cityId,
-                                                    [FromQuery] int? stateId,
-                                                    [FromQuery] string street,
-                                                    [FromQuery] string cep)
+    public IActionResult Get([FromQuery] int? cityId, int? stateId, string street,string cep)
     {
-        var query = _context.Addresses.AsQueryable();
+        var result = _addressService
+       .ListAll(cityId, stateId, street, cep);
 
-        if (cityId.HasValue)
-        {
-            query = query.Where(a => a.CityId == cityId);
-        }
-        if (stateId.HasValue)
-        {
-            query = query.Where(a => a.City.StateId == stateId);
-        }
-
-        if (!string.IsNullOrEmpty(street))
-        {
-            street = street.ToUpper();
-            query = query.Where(a => a.Street.Contains(street));
-        }
-
-        if (!string.IsNullOrEmpty(cep))
-        {
-            query = query.Where(a => a.Cep == cep);
-        }
-
-        if (!query.ToList().Any())
-        {
-            return NoContent();
-        }
-
-        List<AddressViewModel> addressesViewModel = new List<AddressViewModel>();
-        query
-            .Include(a => a.City)
-            .ToList().ForEach(address => {
-            addressesViewModel.Add(new AddressViewModel(address.Id,
-                                                        address.Street,
-                                                        address.CityId,
-                                                        address.City.Name,
-                                                        address.Number,
-                                                        address.Complement,
-                                                        address.Cep));
-        });
-        return Ok(addressesViewModel);
+        return Ok(result);
 
     }
 
