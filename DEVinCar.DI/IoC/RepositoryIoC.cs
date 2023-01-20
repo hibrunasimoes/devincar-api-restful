@@ -11,7 +11,7 @@ namespace DEVinCar.DI.IoC
         public static IServiceCollection RegisterRepositories(this IServiceCollection builder)
         {
             return builder
-                .AddScoped<IAdressRepository, AddressRepository>()
+                .AddScoped<IAddressRepository, AddressRepository>()
                 .AddScoped<ICarRepository, CarRepository>()
                 .AddScoped<IDeliveryRepository, DeliveryRepository>()
                 .AddScoped<ISaleRepository, SaleRepository>()
