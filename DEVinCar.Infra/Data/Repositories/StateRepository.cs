@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Net;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DEVinCar.Infra.Data.Repositories
 {
@@ -12,17 +14,25 @@ namespace DEVinCar.Infra.Data.Repositories
 
         public City GetCityById(int cityId)
         {
-            throw new NotImplementedException();
+            return _context.Cities.Find(cityId);
         }
 
-        public void InsertAdress(Address adress)
+        public void InsertAdress(Address address)
         {
-            throw new NotImplementedException();
+            _context.Addresses.Add(address);
+            _context.SaveChanges();
         }
 
         public void InsertCity(City city)
         {
-            throw new NotImplementedException();
+            _context.Cities.Add(city);
+            _context.SaveChanges();
+        }
+
+        IQueryable<State> IStateRepository.ListAll()
+        {
+            return _context.States
+                .Include(s => s.Cities);
         }
     }
 }
