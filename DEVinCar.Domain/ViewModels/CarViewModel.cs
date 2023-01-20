@@ -9,4 +9,11 @@ public class CarViewModel
     public CarViewModel()
     {
     }
+    public CarViewModel(SaleCar salecar)
+    {
+        Name = salecar.Car.Name;
+        UnitPrice = salecar.UnitPrice;
+        Amount = salecar.Amount;
+        Total = salecar.Sum(UnitPrice, Amount);
+    }
 }

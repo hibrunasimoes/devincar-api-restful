@@ -1,15 +1,16 @@
 ﻿using System;
 using DEVinCar.Domain.DTOs;
+using DEVinCar.Domain.ViewModels;
 
 namespace DEVinCar.Domain.Interfaces.Services
 {
     public interface ISaleService
     {
-        SaleCarDTO GetById(int id);
-        void InsertSale(SaleCarDTO dto);
-        void InsertDelivery(DeliveryDTO dto);
-        void UpdateAmount(int amount);
-        void UpdatePrice(decimal price);
+        SaleViewModel? GetById(int id);
+        void InsertSale(SaleCarDTO dto, int id);
+        void InsertDelivery(DeliveryDTO dto, int id);
+        void UpdateAmount(int saleId, int cardId, int amount);
+        void UpdatePrice(int saleId, int carId, decimal unitPrice);
     }
 }
 
