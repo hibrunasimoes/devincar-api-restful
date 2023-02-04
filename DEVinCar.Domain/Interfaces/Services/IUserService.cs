@@ -13,6 +13,7 @@ namespace DEVinCar.Domain.Interfaces.Services
         void InsertSale(int userId, SaleDTO DTO);
         void InsertBuy(int userId, BuyDTO DTO);
         void DeleteUser(int id);
+        UserDTO GetByUser(LoginDTO login);
     }
 }
 
