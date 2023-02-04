@@ -1,4 +1,5 @@
 ﻿using System;
+using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
 
 namespace DEVinCar.Domain.Interfaces.Repository
@@ -13,6 +14,7 @@ namespace DEVinCar.Domain.Interfaces.Repository
         void InsertSale(Sale sale);
         void InsertBuy(Sale buy);
         void Delete(User user);
+        User GetByUser(LoginDTO login);
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Authentication;
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Interfaces.Repository;
@@ -44,6 +45,24 @@ namespace DEVinCar.Domain.Services
         public UserDTO GetById(int id)
         {
             var userDb = _userRepository.GetById(id);
+            return _mapper.Map<UserDTO>(userDb);
+        }
+
+        public UserDTO GetByUser(int id)
+        {
+            var userDb = _userRepository.GetById(id);
+            if (userDb == null)
+                throw new NotImplementedException();
+
+            return _mapper.Map<UserDTO>(userDb);
+        }
+
+        public UserDTO GetByUser(LoginDTO login)
+        {
+            var userDb = _userRepository.GetByUser(login);
+            if (userDb == null)
+                throw new NotImplementedException();
+
             return _mapper.Map<UserDTO>(userDb);
         }
 
