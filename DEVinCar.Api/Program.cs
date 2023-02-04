@@ -5,6 +5,7 @@ using DEVinCar.Domain.AutoMapper;
 using DEVinCar.Domain.Security;
 using DEVinCar.Infra.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,12 @@ builder.Services.AddDbContext<DevInCarDbContext>();
 
 
 builder.Services.RegisterAuthentication();
+
+builder.Services.AddMvc(config => {
+    config.ReturnHttpNotAcceptable = true;
+    config.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+    config.InputFormatters.Add(new XmlSerializerInputFormatter(config));
+});
 
 
 builder.Services.AddSwaggerGen(options =>

@@ -8,10 +8,13 @@ namespace DEVinCar.Domain.Enums
 {
     public enum Roles
     {
+        [XmlEnumAttribute("M")]
         [Display(Name = "Manager")]
         Manager,
+        [XmlEnumAttribute("S")]
         [Display(Name = "Seller")]
         Seller,
+        [XmlEnumAttribute("B")]
         [Display(Name = "Buyer")]
         Buyer
     }
