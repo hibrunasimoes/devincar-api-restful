@@ -3,11 +3,14 @@ using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using DEVinCar.Domain.Services;
+using DEVinCar.Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DEVinCar.Api.Controllers;
 
 [ApiController]
 [Route("api/car")]
+[Authorize(Roles = "Manager")]
 public class CarController : ControllerBase
 {
     private readonly CarService _carService;
