@@ -27,6 +27,7 @@ public class AuthenticationController : ControllerBase
 
     [HttpPost]
     [Route("login")]
+    [AllowAnonymous]
     public IActionResult Login([FromBody] LoginDTO login)
     {
         var user = _userService.GetByUser(login);

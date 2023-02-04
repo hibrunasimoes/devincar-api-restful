@@ -4,12 +4,13 @@ using DEVinCar.Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using DEVinCar.Domain.Interfaces.Services;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DEVinCar.Api.Controllers;
 
 [ApiController]
 [Route("api/user")]
-
+[Authorize]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
