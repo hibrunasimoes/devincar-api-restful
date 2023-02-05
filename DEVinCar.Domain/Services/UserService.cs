@@ -2,6 +2,7 @@
 using System.Security.Authentication;
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
+using DEVinCar.Domain.Exceptions;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Interfaces.Services;
 using DEVinCar.Domain.Models;
@@ -25,7 +26,7 @@ namespace DEVinCar.Domain.Services
             var userDb = _userRepository.GetById(id);
             if (userDb == null)
             {
-                throw new NotImplementedException();
+                throw new IsExistsException("User not found!");
             }
 
             _userRepository.Delete(userDb);
@@ -36,7 +37,7 @@ namespace DEVinCar.Domain.Services
             var buyerByUserId = _userRepository.GetBuyerByUserID(id);
             if (!buyerByUserId.ToList().Any())
             {
-                throw new NotImplementedException();
+                throw new IsExistsException("Register not found!");
             }
 
             return _mapper.Map<IList<SaleDTO>>(buyerByUserId);
@@ -52,18 +53,14 @@ namespace DEVinCar.Domain.Services
         {
             var userDb = _userRepository.GetById(id);
             if (userDb == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("User not found!");
 
             return _mapper.Map<UserDTO>(userDb);
         }
 
         public UserDTO GetByUser(LoginDTO login)
         {
-            var userDb = _userRepository.GetByUser(login);
-            if (userDb == null)
-                throw new NotImplementedException();
-
-            return _mapper.Map<UserDTO>(userDb);
+            throw new NotImplementedException();
         }
 
         public IList<SaleDTO> GetSalesByUserID(int id)
@@ -71,7 +68,7 @@ namespace DEVinCar.Domain.Services
             var salesByUserId = _userRepository.GetSalesByUserID(id);
             if (!salesByUserId.ToList().Any())
             {
-                throw new NotImplementedException();
+                throw new IsExistsException("User not found!");
             }
 
             return _mapper.Map<IList<SaleDTO>>(salesByUserId);
@@ -88,11 +85,11 @@ namespace DEVinCar.Domain.Services
             var seller = _userRepository.GetById(DTO.SellerId);
             if (seller == null)
             {
-                throw new NotImplementedException();
+                throw new IsExistsException("Seller not found!");
             }
             if (userDb == null)
             {
-                throw new NotImplementedException();
+                throw new IsExistsException("User not found!");
             }
             Sale buy = _mapper.Map<Sale>(DTO);
             buy.BuyerId = userId;

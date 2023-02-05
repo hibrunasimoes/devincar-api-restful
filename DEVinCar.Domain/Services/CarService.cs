@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
+using DEVinCar.Domain.Exceptions;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Interfaces.Services;
 using DEVinCar.Domain.Models;
@@ -23,11 +24,11 @@ namespace DEVinCar.Domain.Services
 
         public void Delete(int id)
         {
-            var carDb = _carRepository.GetById(id);
+           var carDb = _carRepository.GetById(id);
            var soldCar = _saleCarRepository.ListAll().Any(s => s.CarId == id);
             if (carDb == null)
             {
-                throw new Exception("!");
+                throw new IsExistsException("car not found!");
             }
 
             if (soldCar)
@@ -43,7 +44,7 @@ namespace DEVinCar.Domain.Services
             var carDb = _carRepository.GetById(id);
             if (carDb == null)
             {
-                throw new Exception("!");
+                throw new IsExistsException("car not found!");
             }
             return _mapper.Map<CarDTO>(carDb);
         }
@@ -72,7 +73,7 @@ namespace DEVinCar.Domain.Services
 
             if (!query.ToList().Any())
             {
-                throw new Exception("!");
+                throw new IsExistsException("car register not found!");
             }
 
             return _mapper.Map<IList<CarDTO>>(query).ToList();
@@ -85,7 +86,7 @@ namespace DEVinCar.Domain.Services
                   .Any(c => c.Name == DTO.Name && c.Id != DTO.Id);
             if (carDb == null)
             {
-                throw new Exception("!");
+                throw new IsExistsException("car not found!");
             }
 
             if (carDb.Name.Equals(null) || DTO.SuggestedPrice.Equals(null))

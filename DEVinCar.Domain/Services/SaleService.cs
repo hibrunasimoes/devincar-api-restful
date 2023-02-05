@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
+using DEVinCar.Domain.Exceptions;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Interfaces.Services;
 using DEVinCar.Domain.Models;
@@ -32,7 +33,7 @@ namespace DEVinCar.Domain.Services
             var salecarDb = _saleCarRepository.ListAll().Where(sc => sc.SaleId == id);
 
             if (saleDb == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("Sale not found!");
 
             var saleViewModel = new SaleViewModel(saleDb);
             saleViewModel.Itens = salecarDb.Select(sc => new CarViewModel(sc)).ToList();
@@ -47,7 +48,7 @@ namespace DEVinCar.Domain.Services
             var address = _addressRepository.GetById(dto.AddressId);
 
             if (sale == null || address == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("Register not found!");
 
             if (dto.DeliveryForecast < DateTime.Now.Date)
                 throw new NotImplementedException();
@@ -65,7 +66,7 @@ namespace DEVinCar.Domain.Services
             var saleDb = _saleRepository.GetById(dto.SaleId);
 
             if (carDb == null && saleDb == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("Register not found!");
 
             if (dto.UnitPrice <= 0 || dto.Amount <= 0)
                 throw new NotImplementedException();
@@ -89,7 +90,7 @@ namespace DEVinCar.Domain.Services
             var saleCar = _saleCarRepository.GetById(carId);
 
             if (sale == null || saleCar == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("Register not found!");
 
             if (amount <= 0)
                 throw new NotImplementedException();
@@ -104,7 +105,7 @@ namespace DEVinCar.Domain.Services
             var saleCar = _saleCarRepository.GetById(carId);
 
             if (sale == null || saleCar == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("Register not found!");
 
             if (unitPrice <= 0)
                 throw new NotImplementedException();

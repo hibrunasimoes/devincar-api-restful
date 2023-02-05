@@ -26,5 +26,9 @@
     <None Remove="AutoMapper" />
     <None Remove="Microsoft.AspNetCore.Authentication.Abstractions" />
     <None Remove="Microsoft.AspNetCore.Mvc.Formatters.Xml" />
+    <None Remove="Configuration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
   </ItemGroup>
 </Project>

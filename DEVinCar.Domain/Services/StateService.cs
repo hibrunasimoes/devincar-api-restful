@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
+using DEVinCar.Domain.Exceptions;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Interfaces.Services;
 using DEVinCar.Domain.Models;
@@ -32,10 +33,10 @@ namespace DEVinCar.Domain.Services
                 query = query.Where(c => c.Name.Contains(name));
 
             if (!existsState)
-                throw new NotImplementedException();
+                throw new IsExistsException("State not found!");
 
             if (!query.ToList().Any())
-                throw new NotImplementedException();
+                throw new IsExistsException("Register not found!");
 
             return _mapper.Map<IList<CityDTO>>(query);
         }
@@ -46,7 +47,7 @@ namespace DEVinCar.Domain.Services
             var state = _stateRepository.GetById(stateId);
 
             if (city == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("City not found!");
 
             if (city.StateId != stateId)
                 throw new NotImplementedException();
@@ -60,7 +61,7 @@ namespace DEVinCar.Domain.Services
             var stateDb = _stateRepository.GetById(stateId);
 
             if (stateDb == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("State not found!");
 
             return _mapper.Map<GetStateByIdViewModel>(stateDb);
         }
@@ -70,7 +71,7 @@ namespace DEVinCar.Domain.Services
             var city = _cityRepository.GetById(cityId);
 
             if (city == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("City not found!");
 
             if (city.StateId != stateId)
                 throw new NotImplementedException();
@@ -98,7 +99,7 @@ namespace DEVinCar.Domain.Services
                 query = query.Where(s => s.Name.Contains(name));
 
             if (!query.ToList().Any())
-                throw new NotImplementedException();
+                throw new IsExistsException("Register not found!");
 
             var states = query.Select(s => new GetStateViewModel(s)).ToList();
 
