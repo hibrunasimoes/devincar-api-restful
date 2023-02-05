@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
+using DEVinCar.Domain.Exceptions;
 using DEVinCar.Domain.Interfaces.Repository;
 using DEVinCar.Domain.Interfaces.Services;
 using DEVinCar.Domain.Models;
@@ -29,7 +30,7 @@ namespace DEVinCar.Domain.Services
             var relation = _deliveryRepository.ListAll().FirstOrDefault(d => d.AddressId == id);
 
             if (addressDb == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("Address not found!");
 
             if (relation != null)
                 throw new NotImplementedException();
@@ -63,7 +64,7 @@ namespace DEVinCar.Domain.Services
 
             if (!query.ToList().Any())
             {
-                throw new NotImplementedException();
+                throw new IsExistsException("Address not found!");
             }
 
             return _mapper.Map<IList<AddressViewModel>>(query).ToList();
@@ -75,7 +76,7 @@ namespace DEVinCar.Domain.Services
                .ListAll().FirstOrDefault(a => a.Id == id);
 
             if (addressDb == null)
-                throw new NotImplementedException();
+                throw new IsExistsException("Address not found!");
 
             if (addressPatchDTO.Number <= 0)
                 throw new NotImplementedException();

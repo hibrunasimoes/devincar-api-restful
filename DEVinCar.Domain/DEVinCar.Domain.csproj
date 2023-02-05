@@ -20,6 +20,7 @@
     <None Remove="Security\" />
     <None Remove="Microsoft.Owin.Security.Jwt" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOs\" />
@@ -31,6 +32,7 @@
     <Folder Include="Enums\" />
     <Folder Include="AutoMapper\" />
     <Folder Include="Security\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />

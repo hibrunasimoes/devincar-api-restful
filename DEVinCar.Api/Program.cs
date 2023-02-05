@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
+using DEVinCar.Api.Configuration;
 using DEVinCar.DI.IoC;
 using DEVinCar.Domain.AutoMapper;
 using DEVinCar.Domain.Security;
@@ -29,7 +30,6 @@ builder.Services.AddMvc(config => {
     config.InputFormatters.Add(new XmlSerializerInputFormatter(config));
 });
 
-
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
@@ -56,10 +56,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-
 var app = builder.Build();
-
-
+app.UseMiddleware<ErrorMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
